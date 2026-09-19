@@ -768,15 +768,7 @@ function fetchTurnCredentials(cb) {
       turnIceServers = null; cb();
     });
 }
-function saveTURN(){
-  turnCfg.host=document.getElementById('turn-host').value.trim();
-  turnCfg.user=document.getElementById('turn-user').value.trim();
-  turnCfg.pass=document.getElementById('turn-pass').value.trim();
-  try{localStorage.setItem('svyaz_turn',JSON.stringify(turnCfg))}catch(e){}
-  var st=document.getElementById('turn-status');
-  if(turnCfg.host&&turnCfg.user&&turnCfg.pass)st.textContent='✓ TURN настроен — звонки будут работать через разные сети';
-  else st.textContent='';
-}
+
 
 try { var _srv=localStorage.getItem('svyaz_srv');if(_srv)srvURL=_srv; } catch(e) {}
 try { var _n=localStorage.getItem('svyaz_name');if(_n)document.getElementById('l-name').value=_n; } catch(e) {}
@@ -963,12 +955,6 @@ function openSettings(){
   document.getElementById('cur-handle-lbl').textContent=myHandle?'@'+myHandle:'Не установлен';
   document.getElementById('cur-srv-lbl').textContent=srvURL;
   document.getElementById('dark-toggle').className='toggle'+(darkMode?' on':'');
-  // Загружаем TURN
-  document.getElementById('turn-host').value=turnCfg.host||'';
-  document.getElementById('turn-user').value=turnCfg.user||'';
-  document.getElementById('turn-pass').value=turnCfg.pass||'';
-  var st=document.getElementById('turn-status');
-  if(turnCfg.host&&turnCfg.user&&turnCfg.pass)st.textContent='✓ TURN настроен';else st.textContent='';
   document.getElementById('settings-m').className='modal-bg on';
 }
 function closeSettings(){document.getElementById('settings-m').className='modal-bg'}
