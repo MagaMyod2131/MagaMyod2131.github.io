@@ -682,8 +682,7 @@ function setRepoRing(url) {
   document.getElementById('ring-name').textContent='Из репозитория: '+url;
   // Тест
   var a=new Audio(url);
-  a.play().catch(function(){ alert('Файл не найден: '+url+'
-Загрузи mp3 в папку /sounds/ репозитория svyaz на GitHub'); customRingURL=null; });
+  a.play().catch(function(){ alert('Файл не найден: '+url+'\nЗагрузи mp3 в папку /sounds/ репозитория svyaz на GitHub'); customRingURL=null; });
   setTimeout(function(){a.pause()},2000);
 }
 
