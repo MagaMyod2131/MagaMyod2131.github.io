@@ -753,7 +753,7 @@ function endCall(){stopRing();var toId=callToId||callFromId;if(toId)wss({type:'c
 
 function createPC(peerId){
   var pc=new RTCPeerConnection({iceServers:turnIceServers,iceTransportPolicy:'all'});
-  peerConns[peerId]=pc;pendingIce[peerId]=[];
+  peerConns[peerId]=pc;if(!pendingIce[peerId])pendingIce[peerId]=[];
   if(localStream)localStream.getTracks().forEach(function(t){pc.addTrack(t,localStream)});
   pc.onicecandidate=function(e){if(e.candidate)wss({type:'call_ice',toId:peerId,candidate:e.candidate})};
   pc.ontrack=function(e){
